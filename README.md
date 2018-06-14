@@ -6,35 +6,7 @@
  - action `opened`
  - action `edited`
 
-2. use field `number` provided by the hook to retrieve additional information about pull request via [Github API v4](https://developer.github.com/v4/) through the following query
-```graphql
-query PullRequestInfo($owner: String!, name: String!, number: Int!){
-  repository(owner: $owner, name: $name) {
-    pullRequest(number: $number) {
-      id
-      commits(first: 10) {
-        edges {
-          node {
-            url
-          }
-        }
-      }
-      suggestedReviewers {
-        isAuthor
-        isCommenter
-        reviewer {
-          id
-          name
-        }
-      }
-      baseRef {
-        id
-        name
-      }
-    }
-  }
-}
-```
+2. use query `PullRequestInfo` (`REQUESTS.gql`) in addition with field `number` provided by the hook to retrieve further data about the pull request
 
 3. Determine potential reviewers
   - by using the internal algorithm (default)

@@ -1,3 +1,5 @@
+import client from './client';
+
 /**
  * Returns a single pull request from the current repository by number.
  *

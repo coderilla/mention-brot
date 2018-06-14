@@ -10,6 +10,11 @@
     "build": "yarn build:clean && yarn build:transpile",
     "build:clean": "rm -rf .dist/*",
     "build:transpile": "tsc",
+    "build:schema": "yarn build:schema:introspect && yarn build:schema:generateTypes",
+    "build:schema:introspect":
+      "apollo-codegen introspect-schema https://api.github.com/graphql --header \"Authorization: Bearer $GITHUB_TOKEN\" --output ./schema.json",
+    "build:schema:generateTypes":
+      "apollo-codegen generate ./src/**/queries.ts --addTypename --schema ./schema.json --target typescript --output ./src/__generated__/queries.ts",
     "test": "yarn test:lint && yarn test:jest",
     "test:lint": "node ./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
     "test:jest": "NODE_ENV=test jest --env=jsdom --coverage",
@@ -19,6 +24,7 @@
     "@mrboolean/envconfig": "^2.0.0",
     "apollo-cache-inmemory": "^1.2.4",
     "apollo-client": "^2.3.4",
+    "apollo-codegen": "^0.19.1",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
     "cors": "^2.8.4",
