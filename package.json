@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "start": "if test \"$NODE_ENV\" = \"production\" ; then yarn run start:production ; else yarn run start:development ; fi",
+    "start":
+      "if test \"$NODE_ENV\" = \"production\" ; then yarn run start:production ; else yarn run start:development ; fi",
     "start:development": "nodemon --config nodemon.json",
     "start:production": "node dist/index.js",
     "build": "yarn build:clean && yarn build:transpile",
@@ -16,8 +17,15 @@
   },
   "dependencies": {
     "@mrboolean/envconfig": "^2.0.0",
+    "apollo-cache-inmemory": "^1.2.4",
+    "apollo-client": "^2.3.4",
+    "apollo-link-context": "^1.0.8",
+    "apollo-link-http": "^1.5.4",
     "cors": "^2.8.4",
+    "cross-fetch": "^2.2.1",
     "express": "^4.16.3",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
     "winston": "^2.4.1"
   },
   "devDependencies": {
@@ -38,16 +46,10 @@
     "typescript-eslint-parser": "^14.0.0"
   },
   "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js"],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/.jest-ts-processor.js"
     },
-    "testMatch": [
-      "**/*.test.ts"
-    ]
+    "testMatch": ["**/*.test.ts"]
   }
 }

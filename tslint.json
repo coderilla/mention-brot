@@ -4,6 +4,7 @@
     "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
   },
   "rules": {
+    "max-line-length": [true, 120],
     "indent": [true, "spaces", 2],
     "variable-name": false,
     "import-name": false,
