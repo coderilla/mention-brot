@@ -4,6 +4,7 @@ export type Config = {
   port: number;
   isDevelopment: boolean;
   environment: 'development' | 'production';
+  healthRoutePath: string;
 };
 
 const config: Config = describe({
@@ -25,6 +26,12 @@ const config: Config = describe({
     type: TYPE_STRING,
     isRequired: true,
     standard: 'development',
+  },
+  healthRoutePath: {
+    name: 'HEALTH_ROUTE_PATH',
+    type: TYPE_STRING,
+    isRequired: false,
+    standard: '/_health',
   },
 });
 
