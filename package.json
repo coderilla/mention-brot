@@ -3,17 +3,19 @@
   "version": "0.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "start": "if test \"$NODE_ENV\" = \"production\" ; then yarn run start:production ; else yarn run start:development ; fi",
+    "start":
+      "if test \"$NODE_ENV\" = \"production\" ; then yarn run start:production ; else yarn run start:development ; fi",
     "start:development": "nodemon --config nodemon.json",
     "start:production": "node dist/index.js",
     "build": "yarn build:clean && yarn build:transpile",
     "build:clean": "rm -rf .dist/*",
     "build:transpile": "tsc",
     "build:schema": "yarn build:schema:introspect && yarn build:schema:generateTypes",
-    "build:schema:introspect": "apollo-codegen introspect-schema https://api.github.com/graphql --header \"Authorization: Bearer $GITHUB_TOKEN\" --output ./schema.json",
+    "build:schema:introspect":
+      "apollo-codegen introspect-schema https://api.github.com/graphql --header \"Authorization: Bearer $GITHUB_TOKEN\" --output ./schema.json",
     "build:schema:fragments": " node ./scripts/fragment-matcher.js",
-    "build:schema:generate:ts": "apollo-codegen generate \"src/**/*.{js,jsx,ts,tsx,graphql,gql}\" --schema ./schema.json --add-typename --target typescript-modern --passthrough-custom-scalars",
-    "build:schema:generateTypes": "apollo-codegen generate ./src/**/queries.ts --addTypename --schema ./schema.json --target typescript-modern --output ./src/__generated__/queries.ts",
+    "build:schema:generate:ts":
+      "apollo-codegen generate \"src/**/*.{js,jsx,ts,tsx,graphql,gql}\" --schema ./schema.json --add-typename --target typescript-modern --passthrough-custom-scalars",
     "test": "yarn test:lint && yarn test:jest",
     "test:lint": "node ./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
     "test:jest": "NODE_ENV=test jest --env=jsdom --coverage",
@@ -51,16 +53,10 @@
     "typescript-eslint-parser": "^14.0.0"
   },
   "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js"],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/.jest-ts-processor.js"
     },
-    "testMatch": [
-      "**/*.test.ts"
-    ]
+    "testMatch": ["**/*.test.ts"]
   }
 }
