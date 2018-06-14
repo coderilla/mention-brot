@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const FindPullRequestById = gql`
-  query FindPullRequestById($owner: String!, name: String!, number: Int!) {
+  query FindPullRequestById($owner: String!, $name: String!, $number: Int!) {
     repository(owner: $owner, name: $name) {
       pullRequest(number: $number) {
         id

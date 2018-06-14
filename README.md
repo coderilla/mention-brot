@@ -3,8 +3,8 @@
 ## Process
 
 1. Github hook for [PullRequestEvent](https://developer.github.com/v3/activity/events/types/#pullrequestevent) being handled by `mention-brot` on
- - action `opened`
- - action `edited`
+  - action `opened`
+  - action `edited`
 
 2. use query `PullRequestInfo` (`REQUESTS.gql`) in addition with field `number` provided by the hook to retrieve further data about the pull request
 
